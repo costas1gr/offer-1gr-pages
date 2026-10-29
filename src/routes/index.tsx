@@ -35,10 +35,10 @@ const benefits = [
 ];
 
 const work = [
-  { img: cafeImg, domain: "kafenio-brunch.gr", title: "Ο καφές σας, σε μία σελίδα", cta: "Δείτε το μενού", cat: "Καφετέρια & brunch", pkg: "Βασικό Πακέτο" },
-  { img: gymImg, domain: "fitzone-gym.gr", title: "Γράψου. Ξεκίνα σήμερα.", cta: "Κλείσε δωρεάν πρόβα", cat: "Γυμναστήριο", pkg: "Πακέτο Υποστήριξης" },
-  { img: plumberImg, domain: "ydraulicos-oik.gr", title: "Υδραυλικός 24/7 — στην πόρτα σας", cta: "Ζητήστε προσφορά", cat: "Υδραυλικές εργασίες", pkg: "Βασικό Πακέτο" },
-  { img: dentalImg, domain: "odontio-ia.gr", title: "Το χαμόγελό σας, σε έμπιστα χέρια", cta: "Κλείστε ραντεβού", cat: "Οδοντιατρείο", pkg: "Πακέτο Υποστήριξης" },
+  { img: cafeImg, name: "Καφετέρια Αίγλη", title: "Ο καφές σας, σε μία σελίδα", cta: "Δείτε το μενού", cat: "Καφετέρια & brunch", pkg: "Βασικό Πακέτο" },
+  { img: gymImg, name: "FitZone Gym", title: "Γράψου. Ξεκίνα σήμερα.", cta: "Κλείσε δωρεάν πρόβα", cat: "Γυμναστήριο", pkg: "Πακέτο Υποστήριξης" },
+  { img: plumberImg, name: "Υδραυλικός Παπαδάκης", title: "Υδραυλικός 24/7 — στην πόρτα σας", cta: "Ζητήστε προσφορά", cat: "Υδραυλικές εργασίες", pkg: "Βασικό Πακέτο" },
+  { img: dentalImg, name: "Οδοντιατρείο Λάμψη", title: "Το χαμόγελό σας, σε έμπιστα χέρια", cta: "Κλείστε ραντεβού", cat: "Οδοντιατρείο", pkg: "Πακέτο Υποστήριξης" },
 ];
 
 const faqs = [
@@ -142,14 +142,14 @@ function Index() {
         <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">Μερικά παραδείγματα του πώς μπορεί να φαίνεται η διαφημιστική ιστοσελίδα σας.</p>
         <div className="mt-14 grid gap-6 sm:grid-cols-2">
           {work.map((w) => (
-            <figure key={w.domain} className="group overflow-hidden rounded-2xl border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border bg-secondary/60 px-4 py-2.5">
-                <span className="flex gap-1.5">
+            <figure key={w.name} className="group overflow-hidden rounded-2xl border border-border bg-card">
+              <div className="relative flex items-center justify-center border-b border-border bg-secondary/60 px-4 py-2.5">
+                <span className="absolute left-4 flex gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
                   <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
                   <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
                 </span>
-                <span className="ml-2 truncate rounded-md bg-background/70 px-3 py-1 text-xs text-muted-foreground">{w.domain}</span>
+                <span className="truncate font-display text-sm font-semibold text-foreground">{w.name}</span>
               </div>
               <div className="relative aspect-[3/2] overflow-hidden">
                 <img src={w.img} alt={w.cat} loading="lazy" width={1200} height={800} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
