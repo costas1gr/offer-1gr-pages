@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import logoAsset from "@/assets/1gr-logo.png.asset.json";
+import cafeImg from "@/assets/example-cafe.jpg";
+import gymImg from "@/assets/example-gym.jpg";
+import plumberImg from "@/assets/example-plumber.jpg";
+import dentalImg from "@/assets/example-dental.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,6 +32,13 @@ const benefits = [
   { t: "Αξιοπιστία", d: "Ένας σύγχρονος, επαγγελματικός ιστότοπος χτίζει εμπιστοσύνη από το πρώτο δευτερόλεπτο." },
   { t: "Ταχύτητα", d: "Βελτιστοποιημένος κώδικας για άμεση φόρτωση σε κινητά και υπολογιστές." },
   { t: "Μετρήσιμα αποτελέσματα", d: "Ιδανική για διαφημίσεις Google & Meta, με πλήρη παρακολούθηση απόδοσης." },
+];
+
+const work = [
+  { img: cafeImg, domain: "kafenio-brunch.gr", title: "Ο καφές σας, σε μία σελίδα", cta: "Δείτε το μενού", cat: "Καφετέρια & brunch", pkg: "Βασικό Πακέτο" },
+  { img: gymImg, domain: "fitzone-gym.gr", title: "Γράψου. Ξεκίνα σήμερα.", cta: "Κλείσε δωρεάν πρόβα", cat: "Γυμναστήριο", pkg: "Πακέτο Υποστήριξης" },
+  { img: plumberImg, domain: "ydraulicos-oik.gr", title: "Υδραυλικός 24/7 — στην πόρτα σας", cta: "Ζητήστε προσφορά", cat: "Υδραυλικές εργασίες", pkg: "Βασικό Πακέτο" },
+  { img: dentalImg, domain: "odontio-ia.gr", title: "Το χαμόγελό σας, σε έμπιστα χέρια", cta: "Κλείστε ραντεβού", cat: "Οδοντιατρείο", pkg: "Πακέτο Υποστήριξης" },
 ];
 
 const faqs = [
@@ -84,6 +95,7 @@ function Index() {
           </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#services" className="hover:text-foreground">Υπηρεσίες</a>
+            <a href="#work" className="hover:text-foreground">Εργασίες</a>
             <a href="#pricing" className="hover:text-foreground">Τιμές</a>
             <a href="#faq" className="hover:text-foreground">FAQ</a>
           </nav>
@@ -122,6 +134,39 @@ function Index() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Examples */}
+      <section id="work" className="mx-auto max-w-6xl px-5 py-24">
+        <h2 className="text-center text-3xl font-bold md:text-4xl">Ενδεικτικές εργασίες</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">Μερικά παραδείγματα του πώς μπορεί να φαίνεται η διαφημιστική ιστοσελίδα σας.</p>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+          {work.map((w) => (
+            <figure key={w.domain} className="group overflow-hidden rounded-2xl border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border bg-secondary/60 px-4 py-2.5">
+                <span className="flex gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
+                  <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
+                  <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
+                </span>
+                <span className="ml-2 truncate rounded-md bg-background/70 px-3 py-1 text-xs text-muted-foreground">{w.domain}</span>
+              </div>
+              <div className="relative aspect-[3/2] overflow-hidden">
+                <img src={w.img} alt={w.cat} loading="lazy" width={1200} height={800} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <div className="scrim absolute inset-0" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="font-display text-xl font-bold leading-snug">{w.title}</p>
+                  <span className="mt-3 inline-block rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">{w.cta}</span>
+                </div>
+              </div>
+              <figcaption className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 text-sm">
+                <span className="font-medium">{w.cat}</span>
+                <span className="text-muted-foreground">{w.pkg}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-muted-foreground">Τα παραδείγματα είναι ενδεικτικά. Στείλτε μας φωτογραφίες και κείμενα της επιχείρησής σας και θα σας δείξουμε πρόταση για τη δική σας σελίδα.</p>
       </section>
 
       {/* Pricing */}
