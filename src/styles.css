@@ -72,3 +72,7 @@
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
 }
+@utility scrim {
+  background-image: linear-gradient(to top, var(--background),
+    color-mix(in oklab, var(--background) 55%, transparent) 45%, transparent);
+}
