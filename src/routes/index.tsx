@@ -35,7 +35,7 @@ const benefits = [
 ];
 
 const work = [
-  { img: cafeImg, domain: "kafenio-brunch.gr", title: "Ο καφές σας, σε μία σελίδα", cta: "Δείτε το μενού", cat: "Καφετέρia & brunch", pkg: "Βασικό Πακέτο" },
+  { img: cafeImg, domain: "kafenio-brunch.gr", title: "Ο καφές σας, σε μία σελίδα", cta: "Δείτε το μενού", cat: "Καφετέρια & brunch", pkg: "Βασικό Πακέτο" },
   { img: gymImg, domain: "fitzone-gym.gr", title: "Γράψου. Ξεκίνα σήμερα.", cta: "Κλείσε δωρεάν πρόβα", cat: "Γυμναστήριο", pkg: "Πακέτο Υποστήριξης" },
   { img: plumberImg, domain: "ydraulicos-oik.gr", title: "Υδραυλικός 24/7 — στην πόρτα σας", cta: "Ζητήστε προσφορά", cat: "Υδραυλικές εργασίες", pkg: "Βασικό Πακέτο" },
   { img: dentalImg, domain: "odontio-ia.gr", title: "Το χαμόγελό σας, σε έμπιστα χέρια", cta: "Κλείστε ραντεβού", cat: "Οδοντιατρείο", pkg: "Πακέτο Υποστήριξης" },
