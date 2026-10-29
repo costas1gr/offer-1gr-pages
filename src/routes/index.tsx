@@ -47,7 +47,7 @@ const schema = z.object({
 
 function Index() {
   const [plan, setPlan] = useState("support");
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<"name" | "email" | "phone" | "message", string>>>({});
   const [sent, setSent] = useState(false);
 
   const choose = (id: string) => {
@@ -62,7 +62,7 @@ function Index() {
     if (!r.success) {
       const errs: Record<string, string> = {};
       r.error.issues.forEach((i) => (errs[String(i.path[0])] = i.message));
-      setErrors(errs);
+      setErrors(errs as typeof errors);
       return;
     }
     setErrors({});
