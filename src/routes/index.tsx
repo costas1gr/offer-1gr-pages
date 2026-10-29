@@ -5,9 +5,9 @@ import { z } from "zod";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Κατασκευή Landing Page | Pixelώρα Web Agency" },
+      { title: "Κατασκευή Landing Page | 1gr pages" },
       { name: "description", content: "Επαγγελματικές landing pages που φέρνουν πελάτες. Γρήγορη παράδοση, σύγχρονος σχεδιασμός, τεχνική υποστήριξη." },
-      { property: "og:title", content: "Κατασκευή Landing Page | Pixelώρα" },
+      { property: "og:title", content: "Κατασκευή Landing Page | 1gr pages" },
       { property: "og:description", content: "Landing pages που μετατρέπουν επισκέπτες σε πελάτες." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -17,8 +17,8 @@ export const Route = createFileRoute("/")({
 });
 
 const plans = [
-  { id: "basic", name: "Βασικό Πακέτο", price: "290€", note: "εφάπαξ", desc: "Για γρήγορη παρουσία στο διαδίκτυο.", features: ["Landing page μίας σελίδας", "Responsive σχεδιασμός", "Φόρμα επικοινωνίας", "Βασικό SEO", "Παράδοση σε 5–7 ημέρες"] },
-  { id: "support", name: "Πακέτο Υποστήριξης", price: "490€", note: "+ 39€/μήνα", desc: "Ολοκληρωμένη λύση με μηνιαία τεχνική υποστήριξη.", features: ["Όλα του Βασικού", "Μηνιαία τεχνική υποστήριξη", "Αλλαγές περιεχομένου", "Analytics & αναφορές", "Προτεραιότητα στην εξυπηρέτηση"], featured: true },
+  { id: "basic", name: "Βασικό Πακέτο", price: "100€", note: "εφάπαξ", desc: "Για γρήγορη παρουσία στο διαδίκτυο.", features: ["Landing page μίας σελίδας", "Responsive σχεδιασμός", "Φόρμα επικοινωνίας", "Βασικό SEO", "Παράδοση σε 5–7 ημέρες"] },
+  { id: "support", name: "Πακέτο Υποστήριξης", price: "200€", note: "+ 15€/μήνα", desc: "Ολοκληρωμένη λύση με μηνιαία τεχνική υποστήριξη.", features: ["Όλα του Βασικού", "Μηνιαία τεχνική υποστήριξη", "Αλλαγές περιεχομένου", "Analytics & αναφορές", "Προτεραιότητα στην εξυπηρέτηση"], featured: true },
   { id: "custom", name: "Επεκτάσιμο Πακέτο", price: "Κατόπιν προσφοράς", note: "", desc: "Εξατομικευμένη λύση βάσει των αναγκών σας.", features: ["Πολυσέλιδο site ή e-shop", "Custom λειτουργίες & integrations", "Πολυγλωσσικό περιεχόμενο", "Αποκλειστικός υπεύθυνος έργου", "Χρονοδιάγραμμα κατά συμφωνία"] },
 ];
 
@@ -75,7 +75,7 @@ function Index() {
     <div className="min-h-screen">
       <header className="sticky top-0 z-20 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <a href="#" className="font-display text-lg font-bold">Pixel<span className="text-primary">ώρα</span></a>
+          <a href="#" className="font-display text-lg font-bold">1gr <span className="text-primary">pages</span></a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#services" className="hover:text-foreground">Υπηρεσίες</a>
             <a href="#pricing" className="hover:text-foreground">Τιμές</a>
@@ -206,7 +206,7 @@ function Index() {
       </section>
 
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Pixelώρα Web Agency. Με επιφύλαξη παντός δικαιώματος.
+        © {new Date().getFullYear()} 1gr pages. Με επιφύλαξη παντός δικαιώματος.
       </footer>
     </div>
   );
