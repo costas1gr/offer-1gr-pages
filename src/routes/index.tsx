@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
+import logoAsset from "@/assets/1gr-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Κατασκευή Landing Page | 1gr pages" },
-      { name: "description", content: "Επαγγελματικές landing pages που φέρνουν πελάτες. Γρήγορη παράδοση, σύγχρονος σχεδιασμός, τεχνική υποστήριξη." },
-      { property: "og:title", content: "Κατασκευή Landing Page | 1gr pages" },
-      { property: "og:description", content: "Landing pages που μετατρέπουν επισκέπτες σε πελάτες." },
+      { title: "Κατασκευή Διαφημιστικής Ιστοσελίδας | 1gr pages" },
+      { name: "description", content: "Επαγγελματικές διαφημιστικές ιστοσελίδες που φέρνουν πελάτες. Γρήγορη παράδοση, σύγχρονος σχεδιασμός, τεχνική υποστήριξη." },
+      { property: "og:title", content: "Κατασκευή Διαφημιστικής Ιστοσελίδας | 1gr pages" },
+      { property: "og:description", content: "Διαφημιστικές ιστοσελίδες που μετατρέπουν επισκέπτες σε πελάτες." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/")({
 });
 
 const plans = [
-  { id: "basic", name: "Βασικό Πακέτο", price: "100€", note: "εφάπαξ", desc: "Για γρήγορη παρουσία στο διαδίκτυο.", features: ["Landing page μίας σελίδας", "Responsive σχεδιασμός", "Φόρμα επικοινωνίας", "Βασικό SEO", "Παράδοση σε 5–7 ημέρες"] },
+  { id: "basic", name: "Βασικό Πακέτο", price: "100€", note: "εφάπαξ", desc: "Για γρήγορη παρουσία στο διαδίκτυο.", features: ["Διαφημιστική ιστοσελίδα μίας σελίδας", "Responsive σχεδιασμός", "Φόρμα επικοινωνίας", "Βασικό SEO", "Παράδοση σε 5–7 ημέρες"] },
   { id: "support", name: "Πακέτο Υποστήριξης", price: "200€", note: "+ 15€/μήνα", desc: "Ολοκληρωμένη λύση με μηνιαία τεχνική υποστήριξη.", features: ["Όλα του Βασικού", "Μηνιαία τεχνική υποστήριξη", "Αλλαγές περιεχομένου", "Analytics & αναφορές", "Προτεραιότητα στην εξυπηρέτηση"], featured: true },
   { id: "custom", name: "Επεκτάσιμο Πακέτο", price: "Κατόπιν προσφοράς", note: "", desc: "Εξατομικευμένη λύση βάσει των αναγκών σας.", features: ["Πολυσέλιδο site ή e-shop", "Custom λειτουργίες & integrations", "Πολυγλωσσικό περιεχόμενο", "Αποκλειστικός υπεύθυνος έργου", "Χρονοδιάγραμμα κατά συμφωνία"] },
 ];
@@ -75,7 +76,10 @@ function Index() {
     <div className="min-h-screen">
       <header className="sticky top-0 z-20 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <a href="#" className="font-display text-lg font-bold">1gr <span className="text-primary">pages</span></a>
+          <a href="#" className="flex items-center gap-2">
+            <img src={logoAsset.url} alt="1gr pages" className="h-8 w-auto" />
+            <span className="font-display text-lg font-bold text-primary">pages</span>
+          </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
             <a href="#services" className="hover:text-foreground">Υπηρεσίες</a>
             <a href="#pricing" className="hover:text-foreground">Τιμές</a>
@@ -89,12 +93,12 @@ function Index() {
       <section className="relative overflow-hidden bg-hero">
         <div className="grid-lines absolute inset-0" />
         <div className="relative mx-auto max-w-4xl px-5 py-24 text-center md:py-36">
-          <span className="inline-block rounded-full border border-primary/30 bg-accent px-4 py-1.5 text-xs font-medium text-accent-foreground">Κατασκευή Landing Pages</span>
+          <span className="inline-block rounded-full border border-primary/30 bg-accent px-4 py-1.5 text-xs font-medium text-accent-foreground">Κατασκευή Διαφημιστικών Ιστοσελίδων</span>
           <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
             Η σελίδα που μετατρέπει <span className="text-primary">επισκέπτες σε πελάτες</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-            Σχεδιάζουμε γρήγορες, σύγχρονες landing pages για την επιχείρησή σας — έτοιμες μέσα σε λίγες ημέρες.
+            Σχεδιάζουμε γρήγορες, σύγχρονες διαφημιστικές ιστοσελίδες για την επιχείρησή σας — έτοιμες μέσα σε λίγες ημέρες.
           </p>
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <a href="#contact" className="shadow-glow rounded-xl bg-primary px-8 py-4 font-semibold text-primary-foreground transition hover:-translate-y-0.5">Ζητήστε προσφορά</a>
@@ -105,7 +109,7 @@ function Index() {
 
       {/* Services */}
       <section id="services" className="mx-auto max-w-6xl px-5 py-24">
-        <h2 className="text-center text-3xl font-bold md:text-4xl">Γιατί η επιχείρησή σας χρειάζεται landing page</h2>
+        <h2 className="text-center text-3xl font-bold md:text-4xl">Γιατί η επιχείρησή σας χρειάζεται διαφημιστική ιστοσελίδα</h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">Ένα εργαλείο, ένας στόχος: να φέρνει αποτελέσματα.</p>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((b, i) => (
@@ -205,8 +209,11 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} 1gr pages. Με επιφύλαξη παντός δικαιώματος.
+      <footer className="border-t border-border py-10 text-center">
+        <img src={logoAsset.url} alt="1gr pages" className="mx-auto h-8 w-auto" />
+        <p className="mt-3 text-sm text-muted-foreground">
+          © {new Date().getFullYear()} 1gr pages. Με επιφύλαξη παντός δικαιώματος.
+        </p>
       </footer>
     </div>
   );
