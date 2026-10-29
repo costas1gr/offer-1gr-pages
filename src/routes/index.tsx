@@ -76,8 +76,10 @@ function Index() {
     <div className="min-h-screen">
       <header className="sticky top-0 z-20 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <a href="#" className="flex items-center gap-2">
-            <img src={logoAsset.url} alt="1gr pages" className="h-8 w-auto" />
+          <a href="#" className="flex items-center gap-2.5">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-foreground">
+              <img src={logoAsset.url} alt="1gr pages" className="h-8 w-8" />
+            </span>
             <span className="font-display text-lg font-bold text-primary">pages</span>
           </a>
           <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
@@ -210,8 +212,13 @@ function Index() {
       </section>
 
       <footer className="border-t border-border py-10 text-center">
-        <img src={logoAsset.url} alt="1gr pages" className="mx-auto h-8 w-auto" />
-        <p className="mt-3 text-sm text-muted-foreground">
+        <span className="inline-flex items-center gap-2.5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-foreground">
+            <img src={logoAsset.url} alt="1gr pages" className="h-8 w-8" />
+          </span>
+          <span className="font-display text-lg font-bold text-primary">pages</span>
+        </span>
+        <p className="mt-4 text-sm text-muted-foreground">
           © {new Date().getFullYear()} 1gr pages. Με επιφύλαξη παντός δικαιώματος.
         </p>
       </footer>
