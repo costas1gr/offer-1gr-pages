@@ -223,7 +223,7 @@ function Index() {
           <p className="mt-4 text-center text-muted-foreground">Επιλέξτε πακέτο και αφήστε τα στοιχεία σας. Θα επικοινωνήσουμε εντός 24 ωρών.</p>
           {sent ? (
             <div className="mt-10 rounded-2xl border border-primary bg-card p-10 text-center">
-              <h3 className="text-2xl font-bold text-primary">Ευχαριστούμε!</h3>
+              <h3 className="text-2xl font-bold text-primary">Το αίτημά σας στάλθηκε!</h3>
               <p className="mt-3 text-muted-foreground">Σας ευχαριστούμε! Λάβαμε το μήνυμά σας και εντός 24ωρών θα επικοινωνήσω μαζί σας.</p>
               <button onClick={() => setSent(false)} className="mt-6 text-sm text-primary underline">Νέο αίτημα</button>
             </div>
