@@ -61,13 +61,15 @@ function Index() {
   const [plan, setPlan] = useState("support");
   const [errors, setErrors] = useState<Partial<Record<"name" | "email" | "phone" | "message", string>>>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   const choose = (id: string) => {
     setPlan(id);
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const r = schema.safeParse(data);
@@ -78,7 +80,22 @@ function Index() {
       return;
     }
     setErrors({});
-    setSent(true);
+    setSending(true);
+    setSendError(false);
+    try {
+      const planName = plans.find((p) => p.id === r.data.plan)?.name ?? r.data.plan;
+      const res = await fetch("https://formspree.io/f/mqppdbnq", {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({ ...r.data, plan: planName }),
+      });
+      if (!res.ok) throw new Error("Formspree error");
+      setSent(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const input = "w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
