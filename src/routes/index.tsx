@@ -61,13 +61,15 @@ function Index() {
   const [plan, setPlan] = useState("support");
   const [errors, setErrors] = useState<Partial<Record<"name" | "email" | "phone" | "message", string>>>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   const choose = (id: string) => {
     setPlan(id);
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const r = schema.safeParse(data);
@@ -78,7 +80,22 @@ function Index() {
       return;
     }
     setErrors({});
-    setSent(true);
+    setSending(true);
+    setSendError(false);
+    try {
+      const planName = plans.find((p) => p.id === r.data.plan)?.name ?? r.data.plan;
+      const res = await fetch("https://formspree.io/f/mqppdbnq", {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({ ...r.data, plan: planName }),
+      });
+      if (!res.ok) throw new Error("Formspree error");
+      setSent(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const input = "w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
@@ -250,7 +267,10 @@ function Index() {
                 <textarea name="message" rows={4} placeholder="Πείτε μας για την επιχείρησή σας..." className={input} />
                 {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
               </div>
-              <button type="submit" className="shadow-glow w-full rounded-xl bg-primary py-4 font-semibold text-primary-foreground">Αποστολή αιτήματος</button>
+              {sendError && <p className="text-center text-sm text-destructive">Κάτι πήγε στραβά κατά την αποστολή. Δοκιμάστε ξανά.</p>}
+              <button type="submit" disabled={sending} className="shadow-glow w-full rounded-xl bg-primary py-4 font-semibold text-primary-foreground disabled:opacity-60">
+                {sending ? "Αποστολή..." : "Αποστολή αιτήματος"}
+              </button>
             </form>
           )}
         </div>
