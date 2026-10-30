@@ -267,7 +267,10 @@ function Index() {
                 <textarea name="message" rows={4} placeholder="Πείτε μας για την επιχείρησή σας..." className={input} />
                 {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
               </div>
-              <button type="submit" className="shadow-glow w-full rounded-xl bg-primary py-4 font-semibold text-primary-foreground">Αποστολή αιτήματος</button>
+              {sendError && <p className="text-center text-sm text-destructive">Κάτι πήγε στραβά κατά την αποστολή. Δοκιμάστε ξανά.</p>}
+              <button type="submit" disabled={sending} className="shadow-glow w-full rounded-xl bg-primary py-4 font-semibold text-primary-foreground disabled:opacity-60">
+                {sending ? "Αποστολή..." : "Αποστολή αιτήματος"}
+              </button>
             </form>
           )}
         </div>
