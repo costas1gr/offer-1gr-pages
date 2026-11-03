@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import cafeImg from "@/assets/example-cafe.jpg";
@@ -34,10 +34,10 @@ const benefits = [
 ];
 
 const work = [
-  { img: cafeImg, name: "Καφετέρια Αίγλη", title: "Ο καφές σας, σε μία σελίδα", cta: "Δείτε το μενού", cat: "Καφετέρια & brunch", pkg: "Βασικό Πακέτο" },
-  { img: gymImg, name: "FitZone Gym", title: "Γράψου. Ξεκίνα σήμερα.", cta: "Κλείσε δωρεάν πρόβα", cat: "Γυμναστήριο", pkg: "Πακέτο Υποστήριξης" },
-  { img: plumberImg, name: "Υδραυλικός Παπαδάκης", title: "Υδραυλικός 24/7 — στην πόρτα σας", cta: "Ζητήστε προσφορά", cat: "Υδραυλικές εργασίες", pkg: "Βασικό Πακέτο" },
-  { img: dentalImg, name: "Οδοντιατρείο Λάμψη", title: "Το χαμόγελό σας, σε έμπιστα χέρια", cta: "Κλείστε ραντεβού", cat: "Οδοντιατρείο", pkg: "Πακέτο Υποστήριξης" },
+  { img: cafeImg, name: "Καφετέρια Αίγλη", slug: "kafeteria-aigli", title: "Ο καφές σας, σε μία σελίδα", cta: "Δείτε το μενού", cat: "Καφετέρια & brunch", pkg: "Βασικό Πακέτο" },
+  { img: gymImg, name: "FitZone Gym", slug: "fitzone-gym", title: "Γράψου. Ξεκίνα σήμερα.", cta: "Κλείσε δωρεάν πρόβα", cat: "Γυμναστήριο", pkg: "Πακέτο Υποστήριξης" },
+  { img: plumberImg, name: "Υδραυλικός Παπαδάκης", slug: "ydravlikos-papadakis", title: "Υδραυλικός 24/7 — στην πόρτα σας", cta: "Ζητήστε προσφορά", cat: "Υδραυλικές εργασίες", pkg: "Βασικό Πακέτο" },
+  { img: dentalImg, name: "Οδοντιατρείο Λάμψη", slug: "odontiatreio-lampsi", title: "Το χαμόγελό σας, σε έμπιστα χέρια", cta: "Κλείστε ραντεβού", cat: "Οδοντιατρείο", pkg: "Πακέτο Υποστήριξης" },
 ];
 
 const faqs = [
@@ -177,7 +177,8 @@ function Index() {
               </div>
               <figcaption className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 text-sm">
                 <span className="font-medium">{w.cat}</span>
-                <span className="text-muted-foreground">{w.pkg}</span>
+                <span className="flex items-center gap-3"><span className="text-muted-foreground">{w.pkg}</span>
+                <Link to="/demo/$slug" params={{ slug: w.slug }} className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">Preview</Link></span>
               </figcaption>
             </figure>
           ))}
