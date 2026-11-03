@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
-import { demos } from "@/lib/demos";
+import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
+import { demos, themeVars } from "@/lib/demos";
+
 
 export const Route = createFileRoute("/demo/$slug")({
   loader: ({ params }) => {
@@ -31,6 +32,12 @@ export const Route = createFileRoute("/demo/$slug")({
 function DemoPage() {
   const d = Route.useLoaderData();
   const [sent, setSent] = useState(false);
+  useEffect(() => {
+    const prev = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = d.theme.background;
+    return () => { document.body.style.backgroundColor = prev; };
+  }, [d.theme.background]);
+
   const input = "w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,7 +45,7 @@ function DemoPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background" style={themeVars(d.theme) as CSSProperties}>
       <div className="bg-primary px-4 py-2 text-center text-xs font-medium text-primary-foreground">
         Δείγμα διαφημιστικής ιστοσελίδας από 1gr pages ·{" "}
         <Link to="/" hash="work" className="font-semibold underline">← Επιστροφή στα ενδεικτικά έργα</Link>
