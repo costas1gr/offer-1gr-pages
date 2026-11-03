@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
-import logoAsset from "@/assets/1gr-logo.png.asset.json";
 import cafeImg from "@/assets/example-cafe.jpg";
 import gymImg from "@/assets/example-gym.jpg";
 import plumberImg from "@/assets/example-plumber.jpg";
@@ -106,7 +105,7 @@ function Index() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <a href="#" className="flex items-center gap-2.5">
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-foreground">
-              <img src={logoAsset.url} alt="1gr pages" className="h-8 w-8" />
+              <img src="/logo.png" alt="1gr pages" className="h-8 w-8" />
             </span>
             <span className="font-display text-lg font-bold text-primary">pages</span>
           </a>
@@ -279,7 +278,7 @@ function Index() {
       <footer className="border-t border-border py-10 text-center">
         <span className="inline-flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-foreground">
-            <img src={logoAsset.url} alt="1gr pages" className="h-8 w-8" />
+            <img src="/logo.png" alt="1gr pages" className="h-8 w-8" />
           </span>
           <span className="font-display text-lg font-bold text-primary">pages</span>
         </span>

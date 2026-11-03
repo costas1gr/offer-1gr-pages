@@ -76,3 +76,16 @@
   background-image: linear-gradient(to top, var(--background),
     color-mix(in oklab, var(--background) 55%, transparent) 45%, transparent);
 }
+
+/* Hide the injected "Edit with Lovable" badge on the deployed site. */
+#lovable-badge,
+aside[aria-label*="Lovable" i],
+a[href*="lovable.dev"],
+div[class*="lovable-badge" i] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
