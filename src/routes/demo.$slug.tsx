@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
-import { demos } from "@/lib/demos";
+import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
+import { demos, themeVars } from "@/lib/demos";
+
 
 export const Route = createFileRoute("/demo/$slug")({
   loader: ({ params }) => {
@@ -31,6 +32,12 @@ export const Route = createFileRoute("/demo/$slug")({
 function DemoPage() {
   const d = Route.useLoaderData();
   const [sent, setSent] = useState(false);
+  useEffect(() => {
+    const prev = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = d.theme.background;
+    return () => { document.body.style.backgroundColor = prev; };
+  }, [d.theme.background]);
+
   const input = "w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,17 +45,29 @@ function DemoPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background" style={themeVars(d.theme) as CSSProperties}>
       <div className="bg-primary px-4 py-2 text-center text-xs font-medium text-primary-foreground">
         Δείγμα διαφημιστικής ιστοσελίδας από 1gr pages ·{" "}
-        <Link to="/" hash="work" className="underline">Επιστροφή</Link>
+        <Link to="/" hash="work" className="font-semibold underline">← Επιστροφή στα ενδεικτικά έργα</Link>
       </div>
       <header className="border-b border-border">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <span className="font-display text-lg font-bold">{d.name}</span>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <Link
+              to="/"
+              hash="work"
+              className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary"
+            >
+              <span aria-hidden="true">←</span>
+              <span className="hidden sm:inline">Ενδεικτικές εργασίες</span>
+              <span className="sm:hidden">Ενδεικτικές</span>
+            </Link>
+            <span className="truncate font-display text-lg font-bold">{d.name}</span>
+          </div>
           <a href="#form" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">{d.cta}</a>
         </div>
       </header>
+
 
       <section className="relative">
         <img src={d.hero} alt={d.name} width={1200} height={800} className="h-[70vh] min-h-[420px] w-full object-cover" />
@@ -99,9 +118,28 @@ function DemoPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-5 py-14 text-center">
+        <Link
+          to="/"
+          hash="work"
+          className="shadow-glow inline-flex items-center gap-2 rounded-xl border border-primary bg-card px-6 py-3 font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+        >
+          <span aria-hidden="true">←</span>
+          Επιστροφή στα ενδεικτικά έργα
+        </Link>
+      </section>
+
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} {d.name} · Κατασκευή: <Link to="/" className="text-primary">1gr pages</Link>
+        <p>
+          <Link to="/" hash="work" className="font-semibold text-primary underline">
+            ← Επιστροφή στα ενδεικτικά έργα
+          </Link>
+        </p>
+        <p className="mt-2">
+          © {new Date().getFullYear()} {d.name} · Κατασκευή: <Link to="/" className="text-primary">1gr pages</Link>
+        </p>
       </footer>
     </div>
+
   );
 }
