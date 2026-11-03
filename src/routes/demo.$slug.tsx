@@ -58,9 +58,8 @@ function DemoPage() {
               hash="work"
               className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary"
             >
-              <span aria-hidden="true">←</span>
+              <span aria-hidden="true">←</span><span className="sr-only sm:hidden">Ενδεικτικές εργασίες</span>
               <span className="hidden sm:inline">Ενδεικτικές εργασίες</span>
-              <span className="sm:hidden">Ενδεικτικές</span>
             </Link>
             <span className="truncate font-display text-base font-bold sm:text-lg">{d.name}</span>
           </div>
