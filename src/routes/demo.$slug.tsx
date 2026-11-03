@@ -38,7 +38,7 @@ function DemoPage() {
     return () => { document.body.style.backgroundColor = prev; };
   }, [d.theme.background]);
 
-  const input = "w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
+  const input = "w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSent(true);
@@ -46,90 +46,78 @@ function DemoPage() {
 
   return (
     <div className="min-h-screen bg-background" style={themeVars(d.theme) as CSSProperties}>
-      <div className="bg-primary px-4 py-2 text-center text-xs font-medium text-primary-foreground">
+      <div className="bg-primary px-4 py-2 text-center text-xs font-medium leading-relaxed text-primary-foreground">
         Δείγμα διαφημιστικής ιστοσελίδας από 1gr pages ·{" "}
         <Link to="/" hash="work" className="font-semibold underline">← Επιστροφή στα ενδεικτικά έργα</Link>
       </div>
       <header className="border-b border-border">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-4">
+        <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:flex sm:justify-between sm:px-5 sm:py-4">
           <div className="flex min-w-0 items-center gap-3">
             <Link
               to="/"
               hash="work"
               className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary"
             >
-              <span aria-hidden="true">←</span>
+              <span aria-hidden="true">←</span><span className="sr-only sm:hidden">Ενδεικτικές εργασίες</span>
               <span className="hidden sm:inline">Ενδεικτικές εργασίες</span>
-              <span className="sm:hidden">Ενδεικτικές</span>
             </Link>
-            <span className="truncate font-display text-lg font-bold">{d.name}</span>
+            <span className="truncate font-display text-base font-bold sm:text-lg">{d.name}</span>
           </div>
-          <a href="#form" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">{d.cta}</a>
+          <a href="#form" className="shrink-0 whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-sm font-semibold sm:px-4 text-primary-foreground">{d.cta}</a>
         </div>
       </header>
 
 
       <section className="relative">
-        <img src={d.hero} alt={d.name} width={1200} height={800} className="h-[70vh] min-h-[420px] w-full object-cover" />
+        <img src={d.hero} alt={d.name} width={1200} height={800} className="h-[78svh] min-h-[460px] max-h-[820px] w-full object-cover sm:h-[70vh]" />
         <div className="scrim absolute inset-0" />
-        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-14">
-          <h1 className="max-w-2xl text-4xl font-extrabold leading-tight md:text-6xl">{d.title}</h1>
-          <p className="mt-4 max-w-xl text-lg text-muted-foreground">{d.sub}</p>
-          <a href="#form" className="shadow-glow mt-8 inline-block rounded-xl bg-primary px-8 py-4 font-semibold text-primary-foreground">{d.cta}</a>
+        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-4 pb-10 sm:px-5 sm:pb-14">
+          <h1 className="max-w-2xl text-3xl font-extrabold leading-tight sm:text-4xl md:text-6xl">{d.title}</h1>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-4 sm:text-lg">{d.sub}</p>
+          <a href="#form" className="shadow-glow mt-6 block w-full rounded-xl bg-primary px-8 py-4 text-center sm:mt-8 sm:inline-block sm:w-auto font-semibold text-primary-foreground">{d.cta}</a>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-5 px-5 py-20 md:grid-cols-3">
+      <section className="mx-auto grid max-w-6xl gap-4 px-4 py-12 sm:gap-5 sm:px-5 sm:py-20 md:grid-cols-3">
         {d.features.map((f) => (
-          <div key={f.t} className="rounded-2xl border border-border bg-card p-6">
+          <div key={f.t} className="rounded-2xl border border-border bg-card p-5 sm:p-6">
             <h3 className="text-lg font-semibold">{f.t}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{f.d}</p>
+            <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">{f.d}</p>
           </div>
         ))}
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-20 md:grid-cols-2">
-        <img src={d.photo} alt={d.name} loading="lazy" width={1200} height={800} className="w-full rounded-2xl border border-border object-cover" />
+      <section className="mx-auto grid max-w-6xl items-center gap-6 px-4 pb-12 sm:gap-10 sm:px-5 sm:pb-20 md:grid-cols-2">
+        <img src={d.photo} alt={d.name} loading="lazy" width={1200} height={800} className="aspect-[3/2] h-auto w-full rounded-2xl border border-border object-cover" />
         <div>
-          <h2 className="text-3xl font-bold">Γιατί να μας επιλέξετε</h2>
-          <p className="mt-4 text-muted-foreground">Με εμπειρία, συνέπεια και αγάπη για αυτό που κάνουμε, φροντίζουμε κάθε πελάτης να φεύγει ικανοποιημένος.</p>
-          <p className="mt-6 text-sm">📞 {d.phone}</p>
-          <p className="mt-1 text-sm">📍 {d.address}</p>
+          <h2 className="text-2xl font-bold sm:text-3xl">Γιατί να μας επιλέξετε</h2>
+          <p className="mt-3 leading-relaxed text-muted-foreground sm:mt-4">Με εμπειρία, συνέπεια και αγάπη για αυτό που κάνουμε, φροντίζουμε κάθε πελάτης να φεύγει ικανοποιημένος.</p>
+          <a href={`tel:${d.phone.replace(/\s/g, "")}`} className="mt-5 inline-block py-1 text-base font-semibold text-primary">📞 {d.phone}</a>
+          <p className="mt-1 text-base sm:text-sm">📍 {d.address}</p>
         </div>
       </section>
 
       <section id="form" className="border-t border-border bg-hero">
-        <div className="mx-auto max-w-xl px-5 py-20">
-          <h2 className="text-center text-3xl font-bold">{d.formTitle}</h2>
+        <div className="mx-auto max-w-xl px-4 py-12 sm:px-5 sm:py-20">
+          <h2 className="text-center text-2xl font-bold sm:text-3xl">{d.formTitle}</h2>
           {sent ? (
             <div className="mt-8 rounded-2xl border border-primary bg-card p-8 text-center">
               <p className="text-lg font-semibold text-primary">Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα.</p>
               <p className="mt-2 text-xs text-muted-foreground">(Δείγμα — το μήνυμα δεν αποστέλλεται.)</p>
             </div>
           ) : (
-            <form onSubmit={submit} className="mt-8 space-y-4 rounded-2xl border border-border bg-card p-6">
-              <input required name="name" placeholder="Ονοματεπώνυμο *" className={input} />
-              <input required name="phone" placeholder="Τηλέφωνο *" className={input} />
-              <input name="email" type="email" placeholder="Email" className={input} />
-              <textarea name="message" rows={4} placeholder="Μήνυμα" className={input} />
-              <button type="submit" className="shadow-glow w-full rounded-xl bg-primary py-4 font-semibold text-primary-foreground">Αποστολή</button>
+            <form onSubmit={submit} className="mt-6 space-y-4 rounded-2xl border border-border bg-card p-4 sm:mt-8 sm:p-6">
+              <input required name="name" autoComplete="name" aria-label="Ονοματεπώνυμο" placeholder="Ονοματεπώνυμο *" className={input} />
+              <input required name="phone" type="tel" inputMode="tel" autoComplete="tel" aria-label="Τηλέφωνο" placeholder="Τηλέφωνο *" className={input} />
+              <input name="email" type="email" inputMode="email" autoComplete="email" aria-label="Email" placeholder="Email" className={input} />
+              <textarea name="message" rows={4} aria-label="Μήνυμα" placeholder="Μήνυμα" className={input} />
+              <button type="submit" className="shadow-glow w-full rounded-xl bg-primary py-4 text-base font-semibold text-primary-foreground">Αποστολή</button>
             </form>
           )}
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-14 text-center">
-        <Link
-          to="/"
-          hash="work"
-          className="shadow-glow inline-flex items-center gap-2 rounded-xl border border-primary bg-card px-6 py-3 font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
-        >
-          <span aria-hidden="true">←</span>
-          Επιστροφή στα ενδεικτικά έργα
-        </Link>
-      </section>
-
-      <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
+      <footer className="border-t border-border px-4 py-8 text-center text-sm text-muted-foreground">
         <p>
           <Link to="/" hash="work" className="font-semibold text-primary underline">
             ← Επιστροφή στα ενδεικτικά έργα
