@@ -111,9 +111,28 @@ function DemoPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-5 py-14 text-center">
+        <Link
+          to="/"
+          hash="work"
+          className="shadow-glow inline-flex items-center gap-2 rounded-xl border border-primary bg-card px-6 py-3 font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+        >
+          <span aria-hidden="true">←</span>
+          Επιστροφή στα ενδεικτικά έργα
+        </Link>
+      </section>
+
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} {d.name} · Κατασκευή: <Link to="/" className="text-primary">1gr pages</Link>
+        <p>
+          <Link to="/" hash="work" className="font-semibold text-primary underline">
+            ← Επιστροφή στα ενδεικτικά έργα
+          </Link>
+        </p>
+        <p className="mt-2">
+          © {new Date().getFullYear()} {d.name} · Κατασκευή: <Link to="/" className="text-primary">1gr pages</Link>
+        </p>
       </footer>
     </div>
+
   );
 }
