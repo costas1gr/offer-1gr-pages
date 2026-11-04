@@ -12,13 +12,14 @@ export const Route = createFileRoute("/demo/$slug")({
   staticData: { sitemap: true },
   head: ({ loaderData, params }) => {
     const url = `https://pages.1gr.site/demo/${params.slug}`;
+    const desc = loaderData ? `${loaderData.sub} Δείγμα διαφημιστικής ιστοσελίδας από την 1gr pages.` : "";
     return {
       meta: loaderData
         ? [
-            { title: `${loaderData.name} — Δείγμα | 1gr pages` },
-            { name: "description", content: loaderData.sub },
+            { title: `${loaderData.name} — Δείγμα διαφημιστικής ιστοσελίδας | 1gr pages` },
+            { name: "description", content: desc },
             { property: "og:title", content: `${loaderData.name} — Δείγμα ιστοσελίδας` },
-            { property: "og:description", content: loaderData.sub },
+            { property: "og:description", content: desc },
             { property: "og:type", content: "website" },
             { property: "og:url", content: url },
             { property: "og:locale", content: "el_GR" },
