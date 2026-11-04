@@ -9,18 +9,25 @@ export const Route = createFileRoute("/demo/$slug")({
     if (!demo) throw notFound();
     return demo;
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [
-          { title: `${loaderData.name} — Δείγμα | 1gr pages` },
-          { name: "description", content: loaderData.sub },
-          { property: "og:title", content: `${loaderData.name} — Δείγμα ιστοσελίδας` },
-          { property: "og:description", content: loaderData.sub },
-          { property: "og:type", content: "website" },
-          { name: "twitter:card", content: "summary_large_image" },
-        ]
-      : [{ title: "Δεν βρέθηκε | 1gr pages" }, { name: "robots", content: "noindex" }],
-  }),
+  staticData: { sitemap: true },
+  head: ({ loaderData, params }) => {
+    const url = `https://offer-1gr-pages.lovable.app/demo/${params.slug}`;
+    return {
+      meta: loaderData
+        ? [
+            { title: `${loaderData.name} — Δείγμα | 1gr pages` },
+            { name: "description", content: loaderData.sub },
+            { property: "og:title", content: `${loaderData.name} — Δείγμα ιστοσελίδας` },
+            { property: "og:description", content: loaderData.sub },
+            { property: "og:type", content: "website" },
+            { property: "og:url", content: url },
+            { property: "og:locale", content: "el_GR" },
+            { name: "twitter:card", content: "summary_large_image" },
+          ]
+        : [{ title: "Δεν βρέθηκε | 1gr pages" }, { name: "robots", content: "noindex" }],
+      links: loaderData ? [{ rel: "canonical", href: url }] : [],
+    };
+  },
   notFoundComponent: () => (
     <div className="p-20 text-center">
       Το δείγμα δεν βρέθηκε. <Link to="/" className="text-primary underline">Αρχική</Link>
