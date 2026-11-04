@@ -4,7 +4,7 @@ import { sitemapPathForLocation, sitemapStaticPaths, sitemapXML, type SitemapEnt
 import { isSitemapRouteIncluded } from "@/lib/sitemap";
 import { demos } from "@/lib/demos";
 
-const BASE_URL = "https://offer-1gr-pages.lovable.app";
+const BASE_URL = "https://pages.1gr.site";
 
 export const Route = createFileRoute("/sitemap.xml")({
   staticData: { sitemap: false },
