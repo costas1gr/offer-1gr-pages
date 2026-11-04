@@ -11,7 +11,7 @@ export const Route = createFileRoute("/demo/$slug")({
   },
   staticData: { sitemap: true },
   head: ({ loaderData, params }) => {
-    const url = `https://offer-1gr-pages.lovable.app/demo/${params.slug}`;
+    const url = `https://pages.1gr.site/demo/${params.slug}`;
     return {
       meta: loaderData
         ? [
