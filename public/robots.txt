@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://offer-1gr-pages.lovable.app/sitemap.xml

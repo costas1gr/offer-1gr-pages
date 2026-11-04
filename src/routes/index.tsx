@@ -14,9 +14,28 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Κατασκευή Διαφημιστικής Ιστοσελίδας | 1gr pages" },
       { property: "og:description", content: "Διαφημιστικές ιστοσελίδες που μετατρέπουν επισκέπτες σε πελάτες." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://offer-1gr-pages.lovable.app/" },
+      { property: "og:locale", content: "el_GR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Κατασκευή Διαφημιστικής Ιστοσελίδας | 1gr pages" },
+      { name: "twitter:description", content: "Διαφημιστικές ιστοσελίδες που μετατρέπουν επισκέπτες σε πελάτες." },
+    ],
+    links: [{ rel: "canonical", href: "https://offer-1gr-pages.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "1gr pages",
+          url: "https://offer-1gr-pages.lovable.app/",
+          description: "Κατασκευή διαφημιστικών ιστοσελίδων για επιχειρήσεις.",
+          email: "costasgadgets@gmail.com",
+        }),
+      },
     ],
   }),
+  staticData: { sitemap: true },
   component: Index,
 });
 
